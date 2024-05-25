@@ -52,16 +52,16 @@ public class VersionTest {
 
     @Test
     public void testCompareTo() {
-        Version v1 = new Version("1.0.0");
-        Version v2 = new Version("1.0.0-SNAPSHOT");
+        Version v1 = new Version("1.0.0-SNAPSHOT");
+        Version v2 = new Version("1.0.0");
         Version v3 = new Version("1.1.0");
         Version v4 = new Version("2.0.0");
 
-        assertThat(v1.compareTo(v2)).isGreaterThan(0);
-        assertThat(v2.compareTo(v1)).isLessThan(0);
-        assertThat(v1.compareTo(v3)).isLessThan(0);
-        assertThat(v3.compareTo(v1)).isGreaterThan(0);
-        assertThat(v3.compareTo(v4)).isLessThan(0);
-        assertThat(v4.compareTo(v3)).isGreaterThan(0);
+        assertThat(v1.compareTo(v2)).isLessThan(0);     // v1 < v2
+        assertThat(v2.compareTo(v1)).isGreaterThan(0);  // v2 > v1
+        assertThat(v2.compareTo(v3)).isLessThan(0);     // v2 < v3
+        assertThat(v3.compareTo(v2)).isGreaterThan(0);  // v3 > v2
+        assertThat(v3.compareTo(v4)).isLessThan(0);     // v3 < v4
+        assertThat(v4.compareTo(v3)).isGreaterThan(0);  // v4 > v3
     }
 }
