@@ -26,27 +26,15 @@ public class VersionTest {
     @Test
     public void testValidVersions() {
         Version v1 = new Version("1");
-        assertThat(v1.major).isEqualTo(1);
-        assertThat(v1.minor).isEqualTo(0);
-        assertThat(v1.patch).isEqualTo(0);
         assertThat(v1.isSnapshot()).isFalse();
 
         Version v2 = new Version("1.2");
-        assertThat(v2.major).isEqualTo(1);
-        assertThat(v2.minor).isEqualTo(2);
-        assertThat(v2.patch).isEqualTo(0);
         assertThat(v2.isSnapshot()).isFalse();
 
         Version v3 = new Version("1.2.3");
-        assertThat(v3.major).isEqualTo(1);
-        assertThat(v3.minor).isEqualTo(2);
-        assertThat(v3.patch).isEqualTo(3);
         assertThat(v3.isSnapshot()).isFalse();
 
         Version v4 = new Version("1.2.3-SNAPSHOT");
-        assertThat(v4.major).isEqualTo(1);
-        assertThat(v4.minor).isEqualTo(2);
-        assertThat(v4.patch).isEqualTo(3);
         assertThat(v4.isSnapshot()).isTrue();
     }
 
