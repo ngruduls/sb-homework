@@ -18,10 +18,12 @@ class Solution {
         for (int digit = 9; digit >= 0; digit--) {
             if (digitCounts[digit] % 2 == 1 && centerDigit == 0) {
                 centerDigit = (char) (digit + '0');
+                digitCounts[digit]--; // Decrease the count since we use one for the center
             }
-            // append first half of even digits
-            for (int i = 0; i < digitCounts[digit] / 2; i++) {
-                leftHalf.append((char) (digit + '0'));
+            if (digitCounts[digit] % 2 == 0) {
+                for (int i = 0; i < digitCounts[digit] / 2; i++) {
+                    leftHalf.append((char) (digit + '0'));
+                }
             }
         }
 
@@ -52,5 +54,7 @@ class Solution {
         System.out.println(solution.solution("00900"));
         System.out.println(solution.solution("0000"));
         System.out.println(solution.solution("54321"));
+        System.out.println(solution.solution("99999")); // large number with equal odd-digits to 'center'
+        System.out.println(solution.solution("788999")); // larger than in requirements, just to test the logic
     }
 }
